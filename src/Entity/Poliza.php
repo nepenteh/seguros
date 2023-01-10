@@ -76,22 +76,22 @@ class Poliza
         return $this->listaAverias;
     }
 
-    public function addListaAveria(Averia $listaAveria): self
+    public function addListaAveria(Averia $averia): self
     {
-        if (!$this->listaAverias->contains($listaAveria)) {
-            $this->listaAverias->add($listaAveria);
-            $listaAveria->setPoliza($this);
+        if (!$this->listaAverias->contains($averia)) {
+            $this->listaAverias->add($averia);
+            $averia->setPoliza($this);
         }
 
         return $this;
     }
 
-    public function removeListaAveria(Averia $listaAveria): self
+    public function removeListaAveria(Averia $averia): self
     {
-        if ($this->listaAverias->removeElement($listaAveria)) {
+        if ($this->listaAverias->removeElement($averia)) {
             // set the owning side to null (unless already changed)
-            if ($listaAveria->getPoliza() === $this) {
-                $listaAveria->setPoliza(null);
+            if ($averia->getPoliza() === $this) {
+                $averia->setPoliza(null);
             }
         }
 
