@@ -20,6 +20,9 @@ class Averia
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $descripcion = null;
 
+    #[ORM\ManyToOne(inversedBy: 'listaAverias')]
+    private ?Poliza $poliza = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +48,18 @@ class Averia
     public function setDescripcion(?string $descripcion): self
     {
         $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    public function getPoliza(): ?Poliza
+    {
+        return $this->poliza;
+    }
+
+    public function setPoliza(?Poliza $poliza): self
+    {
+        $this->poliza = $poliza;
 
         return $this;
     }

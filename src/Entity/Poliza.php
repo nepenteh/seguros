@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PolizaRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PolizaRepository::class)]
@@ -18,6 +20,24 @@ class Poliza
 
     #[ORM\Column(length: 255)]
     private ?string $tipo = null;
+
+    #[ORM\OneToMany(mappedBy: 'poliza', targetEntity: Averia::class)]
+    private Collection $listaAverias;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Aseguradora $aseguradora = null;
+
+    #[ORM\ManyToOne]
+    private ?Inmueble $inmueble = null;
+
+    #[ORM\ManyToOne]
+    private ?Asegurado $asegurado = null;
+
+    public function __construct()
+    {
+        $this->listaAverias = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -44,6 +64,72 @@ class Poliza
     public function setTipo(string $tipo): self
     {
         $this->tipo = $tipo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Averia>
+     */
+    public function getListaAverias(): Collection
+    {
+        return $this->listaAverias;
+    }
+
+    public function addListaAveria(Averia $listaAveria): self
+    {
+        if (!$this->listaAverias->contains($listaAveria)) {
+            $this->listaAverias->add($listaAveria);
+            $listaAveria->setPoliza($this);
+        }
+
+        return $this;
+    }
+
+    public function removeListaAveria(Averia $listaAveria): self
+    {
+        if ($this->listaAverias->removeElement($listaAveria)) {
+            // set the owning side to null (unless already changed)
+            if ($listaAveria->getPoliza() === $this) {
+                $listaAveria->setPoliza(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getAseguradora(): ?Aseguradora
+    {
+        return $this->aseguradora;
+    }
+
+    public function setAseguradora(?Aseguradora $aseguradora): self
+    {
+        $this->aseguradora = $aseguradora;
+
+        return $this;
+    }
+
+    public function getInmueble(): ?Inmueble
+    {
+        return $this->inmueble;
+    }
+
+    public function setInmueble(?Inmueble $inmueble): self
+    {
+        $this->inmueble = $inmueble;
+
+        return $this;
+    }
+
+    public function getAsegurado(): ?Asegurado
+    {
+        return $this->asegurado;
+    }
+
+    public function setAsegurado(?Asegurado $asegurado): self
+    {
+        $this->asegurado = $asegurado;
 
         return $this;
     }
