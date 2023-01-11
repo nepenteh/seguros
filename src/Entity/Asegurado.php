@@ -62,4 +62,9 @@ class Asegurado
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->apellido1." ".$this->apellido2.", ".$this->nombre;
+    }
 }

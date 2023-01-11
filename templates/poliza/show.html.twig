@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Poliza{% endblock %}
+
+{% block body %}
+    <h1>Poliza</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ poliza.id }}</td>
+            </tr>
+            <tr>
+                <th>Referencia</th>
+                <td>{{ poliza.referencia }}</td>
+            </tr>
+            <tr>
+                <th>Tipo</th>
+                <td>{{ poliza.tipo }}</td>
+            </tr>
+            <tr>
+                <th>Aseguradora</th>
+                <td>{{ poliza.aseguradora }}</td>
+            </tr>
+            <tr>
+                <th>Asegurado</th>
+                <td>{{ poliza.asegurado }}</td>
+            </tr>
+            <tr>
+                <th>Inmueble</th>
+                <td>{{ poliza.inmueble }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_poliza_index') }}">back to list</a>
+
+    <a href="{{ path('app_poliza_edit', {'id': poliza.id}) }}">edit</a>
+
+    {{ include('poliza/_delete_form.html.twig') }}
+{% endblock %}

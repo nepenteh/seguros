@@ -77,4 +77,11 @@ class Inmueble
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+        return $this->calle.
+            ($this->cp ? " CP ".$this->cp : "").
+            " ".$this->localidad." (".$this->provincia.") ";
+    }
 }
