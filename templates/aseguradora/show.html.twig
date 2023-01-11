@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Aseguradora{% endblock %}
+
+{% block body %}
+    <h1>Aseguradora</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ aseguradora.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ aseguradora.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Cif</th>
+                <td>{{ aseguradora.cif }}</td>
+            </tr>
+            <tr>
+                <th>Telefono</th>
+                <td>{{ aseguradora.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Mail</th>
+                <td>{{ aseguradora.mail }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_aseguradora_index') }}">back to list</a>
+
+    <a href="{{ path('app_aseguradora_edit', {'id': aseguradora.id}) }}">edit</a>
+
+    {{ include('aseguradora/_delete_form.html.twig') }}
+{% endblock %}
