@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Asegurado index{% endblock %}
+
+{% block body %}
+    <h1>Asegurado index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Apellido1</th>
+                <th>Apellido2</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for asegurado in asegurados %}
+            <tr>
+                <td>{{ asegurado.id }}</td>
+                <td>{{ asegurado.nombre }}</td>
+                <td>{{ asegurado.apellido1 }}</td>
+                <td>{{ asegurado.apellido2 }}</td>
+                <td>
+                    <a href="{{ path('app_asegurado_show', {'id': asegurado.id}) }}">show</a>
+                    <a href="{{ path('app_asegurado_edit', {'id': asegurado.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_asegurado_new') }}">Create new</a>
+{% endblock %}
