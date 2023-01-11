@@ -133,4 +133,9 @@ class Poliza
 
         return $this;
     }
+
+    public function __toString(): string
+    {
+       return $this->referencia." - ".$this->tipo; 
+    }
 }

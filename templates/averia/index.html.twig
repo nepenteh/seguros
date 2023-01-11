@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Averia index{% endblock %}
+
+{% block body %}
+    <h1>Averia index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fecha</th>
+                <th>Descripcion</th>
+                <th>Póliza</th>
+                <th>Aseguradora</th>
+                <th>Inmueble</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for averium in averias %}
+            <tr>
+                <td>{{ averium.id }}</td>
+                <td>{{ averium.fecha ? averium.fecha|date('Y-m-d') : '' }}</td>
+                <td>{{ averium.descripcion }}</td>
+                <td>{{ averium.poliza }}</td>
+                <td>{{ averium.poliza.aseguradora }}</td>
+                <td>{{ averium.poliza.inmueble }}</td>
+                <td>
+                    <a href="{{ path('app_averia_show', {'id': averium.id}) }}">show</a>
+                    <a href="{{ path('app_averia_edit', {'id': averium.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_averia_new') }}">Create new</a>
+{% endblock %}
