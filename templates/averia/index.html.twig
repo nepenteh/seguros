@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Averia index{% endblock %}
+{% block title %}Listado de Averías{% endblock %}
 
 {% block body %}
-    <h1>Averia index</h1>
+<div class="container-fluid py-1 pt-3">
+    <h1>Listado de Averías</h1>
 
-    <table class="table">
+    <a class="btn btn-outline-dark py-1" href="{{ path('app_averia_new') }}">Alta de nueva Avería</a>
+
+    <table class="table table-striped mt-3">
         <thead>
             <tr>
                 <th>Id</th>
@@ -14,7 +17,7 @@
                 <th>Póliza</th>
                 <th>Aseguradora</th>
                 <th>Inmueble</th>
-                <th>actions</th>
+                <th>opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -27,17 +30,16 @@
                 <td>{{ averium.poliza.aseguradora }}</td>
                 <td>{{ averium.poliza.inmueble }}</td>
                 <td>
-                    <a href="{{ path('app_averia_show', {'id': averium.id}) }}">show</a>
-                    <a href="{{ path('app_averia_edit', {'id': averium.id}) }}">edit</a>
+                    <a class="btn btn-outline-dark py-0 px-1" href="{{ path('app_averia_show', {'id': averium.id}) }}">Ver</a>
+                    <a class="btn btn-outline-dark py-0 px-1" href="{{ path('app_averia_edit', {'id': averium.id}) }}">Edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">No se encontraron averías que mostrar</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_averia_new') }}">Create new</a>
+</div>    
 {% endblock %}

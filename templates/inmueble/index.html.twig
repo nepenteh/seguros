@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Inmueble index{% endblock %}
+{% block title %}Listado de Inmuebles{% endblock %}
 
 {% block body %}
-    <h1>Inmueble index</h1>
+<div class="container-fluid py-1 pt-3">
+    <h1>Listado de Inmuebles</h1>
 
-    <table class="table">
+    <a class="btn btn-outline-dark py-1" href="{{ path('app_inmueble_new') }}">Alta de nuevo Inmueble</a>
+
+    <table class="table table-striped mt-3">
         <thead>
             <tr>
                 <th>Id</th>
@@ -13,7 +16,7 @@
                 <th>Cp</th>
                 <th>Localidad</th>
                 <th>Provincia</th>
-                <th>actions</th>
+                <th>opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -25,17 +28,16 @@
                 <td>{{ inmueble.localidad }}</td>
                 <td>{{ inmueble.provincia }}</td>
                 <td>
-                    <a href="{{ path('app_inmueble_show', {'id': inmueble.id}) }}">show</a>
-                    <a href="{{ path('app_inmueble_edit', {'id': inmueble.id}) }}">edit</a>
+                    <a class="btn btn-outline-dark py-0 px-1" href="{{ path('app_inmueble_show', {'id': inmueble.id}) }}">Ver</a>
+                    <a class="btn btn-outline-dark py-0 px-1" href="{{ path('app_inmueble_edit', {'id': inmueble.id}) }}">Edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="6">No se encontraron inmuebles que mostrar</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_inmueble_new') }}">Create new</a>
+</div>    
 {% endblock %}

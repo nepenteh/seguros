@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Asegurado{% endblock %}
+{% block title %}Nuevo Asegurado{% endblock %}
 
 {% block body %}
-    <h1>Create new Asegurado</h1>
+<div class="container py-1 pt-3">
+    <h1>Nuevo Asegurado</h1>
 
     {{ include('asegurado/_form.html.twig') }}
-
-    <a href="{{ path('app_asegurado_index') }}">back to list</a>
+    
+    <div class="mt-4">
+    <a class="btn btn-outline-dark" href="{{ path('app_asegurado_index') }}">Volver al Listado</a>
+    </div>
+</div>
 {% endblock %}
+ 

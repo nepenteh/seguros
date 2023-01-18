@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Averia{% endblock %}
+{% block title %}Modificar Averia{% endblock %}
 
 {% block body %}
-    <h1>Edit Averia</h1>
+<div class="container py-1 pt-3">
+    <h1>Modificar Averia</h1>
 
-    {{ include('averia/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('averia/_form.html.twig', {'button_label': 'Modificar'}) }}
 
-    <a href="{{ path('app_averia_index') }}">back to list</a>
-
+    <div class="mt-4">
+    <a class="btn btn-outline-dark" href="{{ path('app_averia_index') }}">Volver al Listado</a>
     {{ include('averia/_delete_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}

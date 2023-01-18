@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Inmueble{% endblock %}
+{% block title %}Modificar Inmueble{% endblock %}
 
 {% block body %}
-    <h1>Edit Inmueble</h1>
+<div class="container py-1 pt-3">
+    <h1>Modificar Inmueble</h1>
 
-    {{ include('inmueble/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('inmueble/_form.html.twig', {'button_label': 'Modificar'}) }}
 
-    <a href="{{ path('app_inmueble_index') }}">back to list</a>
-
+    <div class="mt-4">
+    <a class="btn btn-outline-dark" href="{{ path('app_inmueble_index') }}">Volver al Listado</a>
     {{ include('inmueble/_delete_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}

@@ -1,18 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Asegurado index{% endblock %}
+{% block title %}Listado de Asegurados{% endblock %}
 
 {% block body %}
-    <h1 class="border">Asegurado index</h1>
+<div class="container-fluid py-1 pt-3">
+    <h1>Listado de Asegurados</h1>
 
-    <table class="table table-striped">
+    <a class="btn btn-outline-dark py-1" href="{{ path('app_asegurado_new') }}">Alta de nuevo Asegurado</a>
+
+    <table class="table table-striped mt-3">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
                 <th>Apellido1</th>
                 <th>Apellido2</th>
-                <th>actions</th>
+                <th>opciones</th>
             </tr>
         </thead>
         <tbody>
@@ -23,17 +26,16 @@
                 <td>{{ asegurado.apellido1 }}</td>
                 <td>{{ asegurado.apellido2 }}</td>
                 <td>
-                    <a href="{{ path('app_asegurado_show', {'id': asegurado.id}) }}">show</a>
-                    <a href="{{ path('app_asegurado_edit', {'id': asegurado.id}) }}">edit</a>
+                    <a class="btn btn-outline-dark py-0 px-1" href="{{ path('app_asegurado_show', {'id': asegurado.id}) }}">Ver</a>
+                    <a class="btn btn-outline-dark py-0 px-1" href="{{ path('app_asegurado_edit', {'id': asegurado.id}) }}">Edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="5">no records found</td>
+                <td colspan="5">No se encontraron asegurados que mostrar</td>
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-
-    <a href="{{ path('app_asegurado_new') }}">Create new</a>
+    </table>   
+</div>    
 {% endblock %}

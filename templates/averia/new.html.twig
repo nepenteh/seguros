@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Averia{% endblock %}
+{% block title %}Nueva Avería{% endblock %}
 
 {% block body %}
-    <h1>Create new Averia</h1>
+<div class="container py-1 pt-3">
+    <h1>Nueva Avería</h1>
 
     {{ include('averia/_form.html.twig') }}
 
-    <a href="{{ path('app_averia_index') }}">back to list</a>
+    <div class="mt-4">
+    <a class="btn btn-outline-dark" href="{{ path('app_averia_index') }}">Volver al Listado</a>
+    </div>
+</div>
 {% endblock %}

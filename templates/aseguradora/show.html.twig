@@ -3,9 +3,10 @@
 {% block title %}Aseguradora{% endblock %}
 
 {% block body %}
+<div class="container py-1 pt-3">
     <h1>Aseguradora</h1>
 
-    <table class="table">
+    <table class="table table-striped mt-3">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -30,9 +31,10 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_aseguradora_index') }}">back to list</a>
+    <a class="btn btn-outline-dark py-1" href="{{ path('app_aseguradora_index') }}">Volver al Listado</a>
 
-    <a href="{{ path('app_aseguradora_edit', {'id': aseguradora.id}) }}">edit</a>
+    <a class="btn btn-outline-dark py-1" href="{{ path('app_aseguradora_edit', {'id': aseguradora.id}) }}">Edit</a>
 
     {{ include('aseguradora/_delete_form.html.twig') }}
+</div>
 {% endblock %}
